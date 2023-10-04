@@ -108,18 +108,18 @@ def plot_face_blendshapes_bar_graph(face_blendshapes):
   plt.show()
 
 
-#base_options = python.BaseOptions(model_asset_path='face_landmarker_v2_with_blendshapes.task')
-#options = vision.FaceLandmarkerOptions(base_options=base_options,
-                                       #output_face_blendshapes=True,
-                                       #output_facial_transformation_matrixes=True,
-                                       #num_faces=1)
-#detector = vision.FaceLandmarker.create_from_options(options)
+base_options = python.BaseOptions(model_asset_path='face_landmarker_v2_with_blendshapes.task')
+options = vision.FaceLandmarkerOptions(base_options=base_options,
+                                       output_face_blendshapes=True,
+                                       output_facial_transformation_matrixes=True,
+                                       num_faces=1)
+detector = vision.FaceLandmarker.create_from_options(options)
 
-#image = mp.Image.create_from_file("image.png")
-#detection_result = detector.detect(image)
-#annotated_image = draw_landmarks_on_image(image.numpy_view(), detection_result)
-#imgShow = cv2.cvtColor(annotated_image, cv2.COLOR_RGB2BGR)
-#cv2.imshow('Final', imgShow)
+image = mp.Image.create_from_file("image.png")
+detection_result = detector.detect(image)
+annotated_image = draw_landmarks_on_image(image.numpy_view(), detection_result)
+imgShow = cv2.cvtColor(annotated_image, cv2.COLOR_RGB2BGR)
+cv2.imshow('Final', imgShow)
 
 plot_face_blendshapes_bar_graph(detection_result.face_blendshapes[0])
 print(detection_result.facial_transformation_matrixes)
